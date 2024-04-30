@@ -1,0 +1,5 @@
+.form-section {
+    float: left;
+    width: 50%; /* Each section takes half of the container */
+    box-sizing: border-box; /* Ensure padding and border are included in the width */
+  }

@@ -30,6 +30,7 @@ class GreenAgent(BaseAgent):
 
     def get_action(self,observation,action_space):
         action = random.choice(self.action_space)
+        print(action)
         if action == Sleep:
             return Sleep()
         elif action == GreenPingSweep:

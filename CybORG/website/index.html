@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cyber Defense Game</title>
+    <link 
+    rel = "stylesheet">
+    href=""./styles.css"/>
+</head>
+<body>
+<h1>Cyber Defense Game</h1>
+<h2>Round: </h2>
+<h2>Last Round Reward: </h2>
+<h2>Total Reward: </h2>
+<h2 style="text-align: center;">Observation</h2>
+<div id="table-container">
+    <!-- Table will be generated here -->
+</div>
+<script>
+    var observationJson = '[{"Subnet": "10.0.230.160/28","IP Address": "10.0.230.169", "Hostname": "Defender","Activity": "None","Compromised": "No"},{"Subnet": "10.0.230.160/28","IP Address": "10.0.230.171","Hostname": "Enterprise0","Activity": "None","Compromised": "No"},{"Subnet": "10.0.230.160/28","IP Address": "10.0.230.163","Hostname": "Enterprise1","Activity": "None","Compromised": "No"},{"Subnet": "10.0.230.160/28","IP Address": "10.0.230.165","Hostname": "Enterprise2","Activity": "None", "Compromised": "No"},{"Subnet": "10.0.33.32/28","IP Address": "10.0.33.38","Hostname": "Op_Host0","Activity": "None","Compromised": "No"},{"Subnet": "10.0.33.32/28","IP Address": "10.0.33.44","Hostname": "Op_Host1","Activity": "None", "Compromised": "No"},{"Subnet": "10.0.33.32/28","IP Address": "10.0.33.40", "Hostname": "Op_Host2","Activity": "None", "Compromised": "No"},{"Subnet": "10.0.33.32/28","IP Address": "10.0.33.33", "Hostname": "Op_Server0","Activity": "None", "Compromised": "No"},{"Subnet": "10.0.35.80/28","IP Address": "10.0.35.92","Hostname": "User0","Activity": "None","Compromised": "No"}, { "Subnet": "10.0.35.80/28","IP Address": "10.0.35.83","Hostname": "User1","Activity": "None","Compromised": "No"},{"Subnet": "10.0.35.80/28","IP Address": "10.0.35.85","Hostname": "User2","Activity": "None","Compromised": "No"},{"Subnet": "10.0.35.80/28","IP Address": "10.0.35.84","Hostname": "User3", "Activity": "None","Compromised": "No"},{"Subnet": "10.0.35.80/28","IP Address": "10.0.35.81","Hostname": "User4","Activity": "None","Compromised": "No"}]'
+    var data = JSON.parse(observationJson);
+    function generateTable(data) {
+            var html = '<table border="1">';
+            html += '<tr><th>Subnet</th><th>IP Address</th><th>Hostname</th><th>Activity</th><th>Compromised</th></tr>';
+            for (var i = 0; i < data.length; i++) {
+                html += '<tr>';
+                html += '<td>' + data[i].Subnet + '</td>';
+                html += '<td>' + data[i]['IP Address']+ '</td>';
+                html += '<td>' + data[i].Hostname + '</td>';
+                html += '<td>' + data[i].Activity + '</td>';
+                html += '<td>' + data[i].Compromised + '</td>';
+                html += '</tr>';
+            }
+            html += '</table>';
+            return html;
+        }
+        document.getElementById('table-container').innerHTML = generateTable(data);
+</script>
+
+<br/>
+
+
+
+<form action="/submit" method="post">
+
+    <!-- Action -->
+    <div style="display: flex;">
+    <div style="flex: 1;">
+    <h3>Choose Action</h3>
+    <input type="radio" id="Sleep" name="option" value="0">
+    <label for="Sleep">Sleep</label><br>
+    <input type="radio" id="Monitor" name="option" value="1">
+    <label for="Monitor">Monitor</label><br>
+    <input type="radio" id="Analyse" name="option" value="2">
+    <label for="Analyse">Analyse</label><br>
+    <input type="radio" id="Remove" name="option" value="3">
+    <label for="Remove">Remove</label><br>
+    <input type="radio" id="DecoyApache" name="option" value="4">
+    <label for="DecoyApache">DecoyApache</label><br>
+    <input type="radio" id="DecoyFemitter" name="option" value="5">
+    <label for="DecoyFemitter">DecoyFemitter</label><br>
+    <input type="radio" id="DecoyHarakaSMPT" name="option" value="6">
+    <label for="DecoyHarakaSMPT">DecoyHarakaSMPT</label><br>
+    <input type="radio" id="DecoySmss" name="option" value="7">
+    <label for="DecoySmss">DecoySmss</label><br>
+    <input type="radio" id="DecoySSHD" name="option" value="8">
+    <label for="DecoySSHD">DecoySSHD</label><br>
+    <input type="radio" id="DecoySvchost" name="option" value="9">
+    <label for="DecoySvchost">DecoySvchost</label><br>
+    <input type="radio" id="DecoyTomcat" name="option" value="10">
+    <label for="DecoyTomcat">DecoyTomcat</label><br>
+    <input type="radio" id="DecoyVsftpd" name="option" value="11">
+    <label for="DecoyVsftpd">DecoyVsftpd</label><br>
+    <input type="radio" id="Restore" name="option" value="12">
+    <label for="Restore">Restore</label><br>
+    </div>
+
+    <!-- Parameter -->
+   
+    <div style="flex: 1;">
+    <h3>Choose Parameter</h3>
+    <input type="radio" id="notRequired" name="Parameter" value="">
+    <label for="notRequired">Mandatory choice for Sleep/Monitor</label><br>
+    <input type="radio" id="Defender" name="Parameter" value="0">
+    <label for="Defender">Defender</label><br>
+    <input type="radio" id="Enterprise0" name="Parameter" value="1">
+    <label for="Enterprise0">Enterprise0</label><br>
+    <input type="radio" id="Enterprise1" name="Parameter" value="2">
+    <label for="Enterprise1">Enterprise1</label><br>
+    <input type="radio" id="Enterprise2" name="Parameter" value="3">
+    <label for="Enterprise2">Enterprise2</label><br>
+    <input type="radio" id="Op_Host0" name="Parameter" value="4">
+    <label for="Op_Host0">Op_Host0</label><br>
+    <input type="radio" id="Op_Host1" name="Parameter" value="5">
+    <label for="Op_Host1">Op_Host1</label><br>
+    <input type="radio" id="Op_Host2" name="Parameter" value="6">
+    <label for="Op_Host2">Op_Host2</label><br>
+    <input type="radio" id="Op_Server0" name="Parameter" value="7">
+    <label for="Op_Server0">Op_Server0</label><br>
+    <input type="radio" id="User0" name="Parameter" value="8">
+    <label for="User0">User0</label><br>
+    <input type="radio" id="User1" name="Parameter" value="9">
+    <label for="User1">User1</label><br>
+    <input type="radio" id="User2" name="Parameter" value="10">
+    <label for="User2">User2</label><br>
+    <input type="radio" id="User3" name="Parameter" value="11">
+    <label for="User3">User3</label><br>
+    <input type="radio" id="User4" name="Parameter" value="12">
+    <label for="User4">User4</label><br>
+    </div>
+</div>
+    <input type="submit" value="Submit">
+  </form>
+  <br/>
+  <h3>Your action was successful //place holder </h3>
+
+
+
+
+
+
+
+    
+</body>
+</html>

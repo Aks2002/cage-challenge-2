@@ -20,7 +20,7 @@ class B_lineAgent(BaseAgent):
         pass
 
     def get_action(self, observation, action_space):
-        # print(self.action)
+        #print(self.action)
         """gets an action from the agent that should be performed based on the agent's internal state and provided observation and action space"""
         session = 0
 

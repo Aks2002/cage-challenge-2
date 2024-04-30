@@ -1,6 +1,7 @@
 from copy import deepcopy
 from prettytable import PrettyTable
 import numpy as np
+import json
 
 from CybORG.Shared.Results import Results
 from CybORG.Agents.Wrappers.BaseWrapper import BaseWrapper
